@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
+import Sidebar from "./(components)/sidebar";
 import "./globals.css";
+import { Container } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <Container sx={{display:"flex", flexDirection:"row", height:"100dvh"}} disableGutters> 
+          <Sidebar/>
+          {children}
+      </Container> 
+      </body>
     </html>
   );
 }

@@ -1,11 +1,9 @@
-"use client"
+ 
+import Link from "next/link";
 import { Button, Table, TableContainer, TableRow, TableCell, Typography, TableBody, Container, Stack } from "@mui/material"; 
-import dayjs from "dayjs";
-import TaskList from "./taskList";
-const duration = require('dayjs/plugin/duration')
-dayjs.extend(duration);
+import TaskList from "../(components)/task-list";
 
-const DayView = ({date, onReturn}) => {
+const DayView = () => {
 
     let hour = 0;
     const hours = new Array(24).fill(null).map(() =>
@@ -13,9 +11,13 @@ const DayView = ({date, onReturn}) => {
 
     return (
         <Container disableGutters> 
-            <Stack sx={{display: "flex", justifyContent:"space-between", flexDirection:"row", paddingLeft:"2rem"}}>
+            <Stack sx={{display: "flex", justifyContent:"space-between", flexDirection:"row", paddingLeft:"2rem", marginTop:"2rem",}}>
                 <Typography variant="h6">DAY / MONTH INFO</Typography>
-                <Button variant="outlined" onClick={onReturn} sx={{color:"black", borderColor:"black"}}>RETURN</Button>
+                <Link href="/">
+                    <Button variant="outlined" sx={{color:"black", borderColor:"black"}}>
+                        RETURN
+                    </Button>
+                </Link>
             </Stack>
             <TableContainer>
                 <Table stickyHeader>
