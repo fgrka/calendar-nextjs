@@ -1,4 +1,6 @@
 "use client"
+import { useContext } from 'react';
+import { AppContext } from '../(context)/context';
 import { useEffect, useState } from 'react';
 import { getMonth } from '../(util)/calendar';
 import { Box, Container, Grid } from '@mui/material';
@@ -6,28 +8,23 @@ import CalendarHeader from './calendar-header';
 import CalendarDay from './calendar-day';
 import dayjs from 'dayjs';
 
-const Calendar = ({handleClick}) => {
+const Calendar = () => {
+    const { monthIdx, setDateToDisplay } = useContext(AppContext);
     const [monthMatrix, setMonthMatrix] = useState(getMonth(dayjs().month()));
-    const [currentMonthIdx, setCurrentMontIdx] = useState(parseInt(monthMatrix[1][0].month()));
-    const currentMonthName = monthMatrix[1][0].format("MMMM");
-    const currentYear = monthMatrix[1][0].format("YYYY");
-    
+    const initFirstDayOfCurrMonth = monthMatrix[0].filter((day) => day.date() === 1);
+
+
     useEffect(() => {
-        const newMonthMatrix = getMonth(currentMonthIdx);
+        const newMonthMatrix = getMonth(monthIdx);
         setMonthMatrix(newMonthMatrix);
-    }, [currentMonthIdx]);
-
-    const handleMonthChange = (navIdx) => {
-        setCurrentMontIdx((prev) => prev + navIdx);
-    }
-
-    const handleReset = () => {
-        setCurrentMontIdx(dayjs().month());
-    }
+        const firstDayOfCurrMonth = newMonthMatrix[0].filter((day) => day.date() === 1);
+        setDateToDisplay(firstDayOfCurrMonth[0]);
+        console.log(firstDayOfCurrMonth[0])
+    }, [monthIdx]);
  
     return (
         <Container disableGutters> 
-            <CalendarHeader displayedMonth={currentMonthName} displayedYear={currentYear} handleMonthChange={handleMonthChange} handleReset={handleReset}/>
+            <CalendarHeader/>
             <Container sx={{ display:"flex", flexDirection:"row", borderTop:"solid 1px lightgray"}} disableGutters> 
                 <Box sx={{ width: "max-content" }} >
                 {monthMatrix.map((row, rowIdx) => (
