@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"; 
 import { Card, Typography, Box } from "@mui/material";
 import TaskList from "./task-list";
