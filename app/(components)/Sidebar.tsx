@@ -6,7 +6,7 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import TaskAddForm from './task-add-form';
+import TaskAddForm from './TaskAddForm';
 import { useState } from 'react';
 
 const Sidebar = () => {

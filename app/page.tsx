@@ -1,5 +1,5 @@
 "use client";
-import Calendar from "./(components)/calendar";
+import Calendar from "./(components)/Calendar";
 import AppContextProvider from "./(context)/context";
 
 export default function Home() {
