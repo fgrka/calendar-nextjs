@@ -12,8 +12,7 @@ const AppContextProvider = ({ children }) => {
     const [date, setDate] = useState(initDate);
     const [monthIdx, setMonthIdx] = useState(dayjs().month());
 
-    
-    console.log(date)
+
     const setDateToDisplay = (date) => {
         setDate(date);
     }
