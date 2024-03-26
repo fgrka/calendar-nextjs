@@ -9,7 +9,8 @@ interface IAppContext {
     currentYear: string,
     monthIdx: number,
     setDateToDisplay: (data: dayjs.Dayjs) => void,
-    setCurrentMonthIdx: (index: number) => void,
+    changeMonthIdx: (index: number) => void,
+    setToCurrentMonth: (monthNr: number) => void,
 }
 
 export const AppContext = createContext<IAppContext | null>(null);
@@ -24,9 +25,14 @@ const AppContextProvider = ({ children } : { children: React.ReactNode}) => {
         setDate(date);
     }
 
-    const setCurrentMonthIdx = (index: number) => {
+    const changeMonthIdx = (index: number) => {
         setMonthIdx((prev) =>  prev + index);
     }
+
+    const setToCurrentMonth =  (monthNr: number) => {
+        setMonthIdx(monthNr);
+    }
+
 
 
     const context = {
@@ -35,7 +41,8 @@ const AppContextProvider = ({ children } : { children: React.ReactNode}) => {
         currentYear: date.format("YYYY"),
         monthIdx: monthIdx,
         setDateToDisplay: setDateToDisplay,
-        setCurrentMonthIdx: setCurrentMonthIdx,
+        changeMonthIdx: changeMonthIdx,
+        setToCurrentMonth: setToCurrentMonth
     }
 
 

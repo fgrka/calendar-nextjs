@@ -7,14 +7,14 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import dayjs from "dayjs";
 
 const CalendarHeader = () => {
-    const { setCurrentMonthIdx, currentMonthName, currentYear } = useContext(AppContext);
+    const { changeMonthIdx, setToCurrentMonth, currentMonthName, currentYear } = useContext(AppContext);
 
     const handleMonthChange = (navIdx: number) => {
-        setCurrentMonthIdx(navIdx);
+        changeMonthIdx(navIdx);
     }
 
     const handleReset = () => {
-        setCurrentMonthIdx(dayjs().month());
+        setToCurrentMonth(dayjs().month());
     }
     
     return (
