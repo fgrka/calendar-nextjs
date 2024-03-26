@@ -2,10 +2,16 @@
 import { createContext, useState } from "react";
 import dayjs from "dayjs";
 
-export const AppContext = createContext({
-    setDateToDisplay: () => {},
-    setCurrentMonthIdx: () => {},
-});
+interface IAppContext {
+    firstDayDate: dayjs.Dayjs,
+    currentMonthName: string,
+    currentYear: string,
+    monthIdx: number,
+    setDateToDisplay: (data: dayjs.Dayjs) => void,
+    setCurrentMonthIdx: (index: number) => void,
+}
+
+export const AppContext = createContext<IAppContext | null>(null);
 
 const AppContextProvider = ({ children }) => {
     const initDate = dayjs();

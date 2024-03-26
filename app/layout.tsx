@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import Sidebar from "./(components)/sidebar";
+import Sidebar from "./(components)/Sidebar";
 import "./globals.css";
 import { Container } from "@mui/material";
 

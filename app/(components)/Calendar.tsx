@@ -3,10 +3,12 @@ import { useContext } from 'react';
 import { AppContext } from '../(context)/context';
 import { useEffect, useState } from 'react';
 import { getMonth } from '../(util)/calendar';
-import { Box, Container, Grid, Stack, keyframes } from '@mui/material';
+import { Container, Stack } from '@mui/material';
 import CalendarHeader from './CalendarHeader';
 import CalendarDay from './CalendarDay';
 import dayjs from 'dayjs';
+
+// export const dynamic = "force-dynamic";
 
 const Calendar = () => {
     const { monthIdx, setDateToDisplay } = useContext(AppContext);
