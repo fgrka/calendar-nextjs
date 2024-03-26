@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext } from "react";
 import { AppContext } from "../(context)/context";
 import { Stack, Typography, IconButton, Button } from "@mui/material";
@@ -8,8 +9,8 @@ import dayjs from "dayjs";
 const CalendarHeader = () => {
     const { setCurrentMonthIdx, currentMonthName, currentYear } = useContext(AppContext);
 
-    const handleMonthChange = (navIdx) => {
-        setCurrentMonthIdx((prev) => prev + navIdx);
+    const handleMonthChange = (navIdx: number) => {
+        setCurrentMonthIdx(navIdx);
     }
 
     const handleReset = () => {

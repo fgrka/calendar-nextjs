@@ -4,11 +4,11 @@ import dayjs from "dayjs";
 export function getMonth(month) {
  
     const year = dayjs().year();
-    let firstDayOfFirstWeek = dayjs(new Date(year, month, 1)).day();
+    const firstDayOfFirstWeek = dayjs(new Date(year, month, 1)).day();
     let firstDay = 1 - firstDayOfFirstWeek;
     const monthMatrix = new Array(5).fill([]).map(() => {
             return new Array(7).fill(null).map(() => {
-                let date = dayjs(new Date(year, month, firstDay));
+                const date = dayjs(new Date(year, month, firstDay));
                 firstDay++;
                 return date;
             })

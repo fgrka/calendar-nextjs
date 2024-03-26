@@ -1,4 +1,5 @@
 "use client"
+import React from "react";
 import { createContext, useState } from "react";
 import dayjs from "dayjs";
 
@@ -13,18 +14,18 @@ interface IAppContext {
 
 export const AppContext = createContext<IAppContext | null>(null);
 
-const AppContextProvider = ({ children }) => {
+const AppContextProvider = ({ children } : { children: React.ReactNode}) => {
     const initDate = dayjs();
     const [date, setDate] = useState(initDate);
     const [monthIdx, setMonthIdx] = useState(dayjs().month());
 
 
-    const setDateToDisplay = (date) => {
+    const setDateToDisplay = (date: dayjs.Dayjs) => {
         setDate(date);
     }
 
-    const setCurrentMonthIdx = (month) => {
-        setMonthIdx(month);
+    const setCurrentMonthIdx = (index: number) => {
+        setMonthIdx((prev) =>  prev + index);
     }
 
 

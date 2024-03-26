@@ -1,4 +1,5 @@
 "use client"
+import React from 'react';
 import { useContext } from 'react';
 import { AppContext } from '../(context)/context';
 import { useEffect, useState } from 'react';
@@ -13,8 +14,6 @@ import dayjs from 'dayjs';
 const Calendar = () => {
     const { monthIdx, setDateToDisplay } = useContext(AppContext);
     const [monthMatrix, setMonthMatrix] = useState(getMonth(dayjs().month()));
-    const initFirstDayOfCurrMonth = monthMatrix[0].filter((day) => day.date() === 1);
-
 
     useEffect(() => {
         const newMonthMatrix = getMonth(monthIdx);
@@ -28,11 +27,11 @@ const Calendar = () => {
             <CalendarHeader/>
             <Container sx={{ display:"flex", flexDirection:"row", borderTop:"solid 1px lightgray"}} disableGutters> 
                 <Stack direction="row" sx={{flexWrap:"wrap"}}>
-                {monthMatrix.map((row, rowIdx) => (
+                {monthMatrix.map((row) => (
                         row.map((date, key) => {
                             if (date) {
                                 return(    
-                                 <CalendarDay key={key} dateInfo={date} index={rowIdx}/>
+                                 <CalendarDay key={key} dateInfo={date}/>
                                 )
                             }
                         })))}

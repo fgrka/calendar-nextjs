@@ -1,4 +1,5 @@
 "use client"
+import React from "react";
 import { useContext, useEffect } from "react";
 import Link from "next/link"; 
 import { Card, Typography, Box } from "@mui/material";
@@ -7,7 +8,7 @@ import dayjs from "dayjs";
 import { useState } from "react";
 import { AppContext } from "../(context)/context";
 
-const CalendarDay = ({dateInfo, index}) => {
+const CalendarDay = ({dateInfo} : {dateInfo: dayjs.Dayjs}) => {
     const { monthIdx } = useContext(AppContext);
     const [isDayActive, setDayActive] = useState<boolean>(false);
     const dayNum = dateInfo.format("DD");

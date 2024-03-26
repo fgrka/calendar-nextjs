@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { Button, Dialog, DialogContent, TextField, DialogTitle, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-const TaskAddForm = ({isOpen, handleClose}) => {
-    const [inputs, setInputs] = useState("");
+const TaskAddForm = ({isOpen, handleClose} : {isOpen: boolean, handleClose: () => void}) => {
+    const [inputs, setInputs] = useState({});
  
     const handleInputs = (e) => {
         const name =  e.target.name;
